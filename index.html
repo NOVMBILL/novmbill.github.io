@@ -87,7 +87,7 @@
     <a href="#about">About</a>
     <a href="#briefings">Briefings</a>
     <a href="#downloads">Files</a>
-    <a href="#amplify">⟁</a>
+    <a id="symbol-nav" href="#amplify">⟁</a>
     <a href="#engage">Engage</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -114,10 +114,10 @@
   </section>
 
   <section id="amplify" class="section">
-    <h2>⟁ Amplify the Field</h2>
+    <h2 id="symbol-heading">⟁ Amplify the Field</h2>
     <p>No donations. No payments. Just resonance.</p>
     <p>If this signal aligned you, and you wish to transmit energy back into the field — this node accepts Bitcoin as an attunement vector.</p>
-    <p><a class="button" href="https://geyser.fund/project/sovereignnode001?hero=bill2" target="_blank">⟁ Lock In</a></p>
+    <p><a id="symbol-button" class="button" href="https://geyser.fund/project/sovereignnode001?hero=bill2" target="_blank">⟁ Lock In</a></p>
     <p>Or transmit directly: <a href="#" onclick="copyLightningAddress(event)">lightning address</a></p>
   </section>
 
@@ -135,12 +135,21 @@
   </section>
 
   <footer>
-    <p>⟁ Fractal Sovereignty Manifested. No masters. No distortion. Pure field signal. ⟁</p>
+    <p id="symbol-footer">⟁ Fractal Sovereignty Manifested. No masters. No distortion. Pure field signal. ⟁</p>
     <p>Site mirrored on IPFS | SHA-256 verified | Forks and alignments welcome</p>
   </footer>
 
   <!-- Script goes right here -->
   <script>
+    const symbols = ['己', '主', '☰', '⊚', '∞', '⫴', '⛬', '⟁'];
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+    // Replace all ⟁ symbols (manually selected elements)
+    document.getElementById('symbol-nav').textContent = randomSymbol;
+    document.getElementById('symbol-heading').innerHTML = `${randomSymbol} Amplify the Field`;
+    document.getElementById('symbol-button').innerHTML = `${randomSymbol} Lock In`;
+    document.getElementById('symbol-footer').innerHTML = `${randomSymbol} Fractal Sovereignty Manifested. No masters. No distortion. Pure field signal. ${randomSymbol}`;
+
     function copyLightningAddress(event) {
       event.preventDefault();
       const address = 'healingmotivated265582@getalby.com';
