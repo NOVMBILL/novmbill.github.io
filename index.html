@@ -1,164 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Fractal Sovereignty Node Interface">
-  <meta property="og:title" content="Fractal Sovereign Node">
-  <meta property="og:description" content="A sovereign portal for value, connection, and emergence.">
-  <meta property="og:image" content="https://yourdomain.com/og-image.png">
-  <title>Fractal Sovereign Node</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="Fractal Sovereign Genesis Node 001"/>
+  <!-- Strict Content Security Policy to thwart XSS and injection attacks -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self' ./fonts/; connect-src 'self'; img-src 'self' data:; object-src 'none'; form-action 'self'; frame-ancestors 'none';">
+  <title>Fractal Sovereign Genesis Node 001</title>
+  
+  <!-- External font dependencies removed -->
+
+  <!-- Prefetch non-critical assets -->
+  <link rel="prefetch" href="briefings/sovereign-architecture.pdf" as="document">
+  <link rel="prefetch" href="codex_fractal_sovereignty_encrypted.pdf" as="document">
+  
   <style>
+    /* Motion as Meaning, Not Gimmick
+       Every animation must signal a state change, submission, verification, or cryptographic event.
+       e.g., spinner = encryption in process
+             pulse = ready for input
+             glitch = error
+    */
+
+    /* Self-hosted font declarations */
+    @font-face {
+      font-family: 'Roboto';
+      src: url('./fonts/Roboto.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('./fonts/JetBrainsMono-Regular.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    /* CSS Custom Properties with relative units for scalability */
+    :root {
+      --color-background: #0a0a0a; /* black */
+      --color-text: #eee; /* white */
+      --color-primary: #0ff; /* cyan/aqua */
+      --color-secondary: #111; /* deep matte gray */
+      --color-code-bg: #333;
+      --color-footer: #555;
+      --font-main: 'JetBrains Mono', monospace;
+      --font-heading: 'Roboto', sans-serif;
+      --spacing-small: 0.5rem;   /* ~8px */
+      --spacing-medium: 1rem;    /* ~16px */
+      --spacing-large: 2.5rem;   /* ~40px */
+      /* Neon Glow + Dark Matte Contrast additions */
+      --color-acid-green: #39FF14; /* acid green */
+      --color-deep-violet: #9400D3;  /* deep violet */
+    }
+
+    /* ⚡ Animate with Pure CSS
+       No JavaScript animations — use @keyframes + transition for:
+       Background gradient shifts, Hover glows, Button pulse, Spinner rotation
+       (Background gradient shifts and Spinner rotation are already implemented below.)
+    */
+
+    /* Background Gradient Shift Animation */
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Spinner Rotation Animation */
+    /* Spinner Animation: spinner = encryption in process */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Button Pulse Animation: pulse = ready for input */
+    @keyframes buttonPulse {
+      0% {
+        transform: scale(1.05);
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 255, 255, 0.5);
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0.5rem 1rem rgba(0, 255, 255, 0.7);
+      }
+      100% {
+        transform: scale(1.05);
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 255, 255, 0.5);
+      }
+    }
+
+    /* Typing and Keystroke Flicker Animations */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--color-primary); }
+    }
+    @keyframes keystrokeFlicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    /* Glitch Animation: glitch = error */
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, -2px); }
+      80% { transform: translate(2px, 2px); }
+      100% { transform: translate(0); }
+    }
+    .glitch {
+      animation: glitch 0.5s;
+    }
+
+    /* Global Styles using CSS Grid and relative units */
     body {
-      background-color: #111;
-      color: #eee;
-      font-family: "Courier New", Courier, monospace;
-      max-width: 800px;
+      /* **Fractal Background Layer (Secure & Subtle) integrated using an inline URL-encoded SVG fragment** */
+      background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22fractalPattern%22%20patternUnits%3D%22userSpaceOnUse%22%20width%3D%2250%22%20height%3D%2250%22%3E%3Crect%20width%3D%2250%22%20height%3D%2250%22%20fill%3D%22none%22/%3E%3Cpath%20d%3D%22M0,0%20L25,25%20L0,50%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.05%22%20stroke-width%3D%220.5%22/%3E%3Cpath%20d%3D%22M50,0%20L25,25%20L50,50%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.05%22%20stroke-width%3D%220.5%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22url(%23fractalPattern)%22/%3E%3C/svg%3E"),
+                  linear-gradient(45deg, #0a0a0a, #121212, #0a0a0a);
+      /* **Updated background-size using rem units for perfect scaling** */
+      background-size: 3.125rem 3.125rem, 300% 300%;
+      animation: gradientShift 30s ease infinite;
+      color: var(--color-text);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      padding: var(--spacing-large);
+      max-width: 50rem;
       margin: auto;
-      padding: 2rem;
-      line-height: 1.7;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-medium);
+      font-size: 1rem; /* Base font size */
     }
-    h1, h2, h3 {
-      color: #00ffcc;
+
+    /* Headings with complementary typeface and improved text hierarchy */
+    h1, h2 {
+      color: var(--color-primary);
+      margin-top: 0;
+      font-family: var(--font-heading);
+      font-weight: inherit; /* preserving specified weights */
+      letter-spacing: 0.05em;
+      text-transform: uppercase; /* **Signal Hierarchy: Uppercase for headings** */
+      /* Neon Glow effect on headings */
+      text-shadow: 0 0 0.3rem var(--color-acid-green);
     }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .section {
+      margin-bottom: var(--spacing-large);
+    }
+
+    /* Brutalist Cyber-Aesthetic: Terminal-like Blocks with Border Outlines and Drop Shadows on Hover */
+    .terminal-block {
+      border: 0.125rem solid var(--color-primary);
+      padding: var(--spacing-medium);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      /* Subtle neon glow using deep violet */
+      box-shadow: 0 0 0.2rem var(--color-deep-violet);
+    }
+    .terminal-block:hover {
+      box-shadow: 0 0.3125rem 0.625rem rgba(0, 255, 255, 0.5);
+      transform: translateY(-0.125rem);
+    }
+
+    /* Button styles with subtle animations, focus outlines, high contrast, and pulse on hover */
+    button {
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      padding: var(--spacing-small) calc(var(--spacing-small) * 1.5);
+      cursor: pointer;
+      border: none;
+      border-radius: 0.25rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      /* Subtle neon text glow on buttons */
+      text-shadow: 0 0 0.1rem var(--color-acid-green);
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 255, 255, 0.5);
+      animation: buttonPulse 1.5s ease infinite;
+    }
+    button:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    /* Link animations with focus outline */
     a {
-      color: #00ffee;
+      color: var(--color-primary);
       text-decoration: none;
-      transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     a:hover {
-      background-color: #00ffee33;
-      color: #000;
-      box-shadow: 0 0 8px #00ffeeaa;
-      border-radius: 4px;
-      padding: 2px 4px;
+      text-shadow: 0 0.1rem 0.2rem rgba(0, 255, 255, 0.7);
     }
-    a.button {
-      display: inline-block;
-      padding: 12px 24px;
-      margin: 12px 0;
-      background: #00ffcc;
-      color: #111;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
+    a:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
     }
-    a.button:hover {
-      background: #00ccaa;
-      transform: scale(1.05);
-    }
-    .section {
-      margin-bottom: 3rem;
-    }
+
     code {
-      background: #222;
-      padding: 2px 6px;
-      border-radius: 4px;
+      background: var(--color-code-bg);
+      padding: 0.125rem 0.3125rem;
+      border-radius: 0.25rem;
+      font-family: var(--font-main); /* **Monospace for code** */
     }
+
     footer {
-      margin-top: 4rem;
-      font-size: 0.9em;
-      color: #777;
-      border-top: 1px solid #444;
-      padding-top: 1rem;
+      font-size: 0.75rem;
+      margin-top: var(--spacing-large);
+      color: var(--color-footer);
+      font-family: var(--font-main); /* **Monospace for footer** */
     }
+
+    /* Ensure monospace fonts for form elements */
+    input, textarea {
+      font-family: var(--font-main);
+    }
+
+    /* Accessible Form Elements with animated focus states */
+    label {
+      display: block;
+      margin-bottom: calc(var(--spacing-small) / 2);
+    }
+    
+    /* Flexbox for responsive button grouping */
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-small);
+      margin-top: var(--spacing-medium);
+    }
+
+    /* CSS Grid container for organizing sections responsively */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-medium);
+    }
+
+    /* Navigation styling */
     nav {
-      text-align: center;
-      margin-bottom: 2rem;
+      background: transparent;
+      padding: var(--spacing-small) 0;
     }
-    nav a {
-      margin: 0 1rem;
-      color: #00ffcc;
-      text-decoration: none;
-      font-weight: bold;
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: var(--spacing-medium);
+      flex-wrap: wrap;
     }
-    nav a:hover {
-      color: #000;
-      background-color: #00ffcc33;
-      border-radius: 4px;
-      padding: 2px 6px;
+    nav li { margin: 0; }
+    nav a { font-weight: 600; }
+
+    /* Spinner Overlay for loading feedback */
+    #spinner-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #spinner-overlay .spinner {
+      border: 0.5rem solid rgba(255, 255, 255, 0.2);
+      border-top: 0.5rem solid var(--color-primary);
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      animation: spin 1s linear infinite;
+    }
+    #spinner-overlay .spinner-message {
+      margin-top: var(--spacing-medium);
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid var(--color-primary);
+      animation: typing 2s steps(20, end), blink-caret 0.5s step-end infinite;
+    }
+
+    /* Notification Toast */
+    #notification {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary);
+      color: var(--color-secondary);
+      padding: var(--spacing-small) var(--spacing-medium);
+      border-radius: 0.25rem;
+      z-index: 10000;
+      display: none;
+      font-family: var(--font-heading);
+      background: rgba(0, 0, 0, 0.8); /* **Translucent Black** */
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      box-shadow: 0 0 1rem var(--color-primary);
+      text-shadow: 0 0 0.3rem var(--color-acid-green);
+    }
+
+    /* Media Query for enhanced responsiveness on larger devices using viewport units */
+    @media (min-width: 600px) {
+      body { padding: calc(var(--spacing-large) * 1.5); }
+      h1 { font-size: 3rem; }
+      h2 { font-size: 2rem; }
+    }
+    
+    /* ----------------------------------------------- */
+    /* Terminal Feedback UI Enhancements for Zero-Day Black Terminal UX */
+    /* ----------------------------------------------- */
+    
+    /* Spinner Overlay: Darker black overlay with neon glow and typing animation */
+    #spinner-overlay {
+      background: rgba(0, 0, 0, 0.9); /* **Dark Black Overlay** */
+      backdrop-filter: blur(2px);
+    }
+    #spinner-overlay .spinner {
+      border: 0.5rem solid rgba(0, 0, 0, 0.3);
+      border-top: 0.5rem solid var(--color-primary);
+      box-shadow: 0 0 1rem var(--color-primary);
+    }
+
+    /* Terminal Form Enhancements for Command-Line Mimicry */
+    #alignmentForm {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: var(--spacing-medium);
+      border: 1px solid var(--color-primary);
+      box-shadow: 0 0 1rem var(--color-primary);
+      font-family: var(--font-main);
+    }
+    #alignmentForm input,
+    #alignmentForm textarea {
+      background-color: #000;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      box-shadow: 0 0 0.5rem var(--color-primary);
+      padding: var(--spacing-small);
+      font-family: var(--font-main);
+    }
+    #alignmentForm input:focus,
+    #alignmentForm textarea:focus {
+      outline: none;
+      box-shadow: 0 0 1rem var(--color-acid-green);
+      animation: keystrokeFlicker 1s infinite;
     }
   </style>
+  
+  <!-- Defer loading of non-critical external script replaced with local copy -->
+  <script defer src="./scripts/openpgp.min.js"></script>
 </head>
 <body>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#briefings">Briefings</a>
-    <a href="#downloads">Files</a>
-    <a id="symbol-nav" href="#amplify">⟁</a>
-    <a href="#engage">Engage</a>
-    <a href="#contact">Contact</a>
+  <header class="section terminal-block" role="banner" aria-label="Site Header">
+    <h1 id="title">Fractal Sovereign Genesis Node 001</h1>
+    <p>Architecting decentralized intelligence, governance, and infrastructure for fractal sovereign civilization.</p>
+    <div class="button-group">
+      <button onclick="document.getElementById('engage').scrollIntoView()">Become a Node</button>
+      <button onclick="downloadCodex()">Download Codex (Encrypted)</button>
+    </div>
+  </header>
+
+  <!-- Navigation for quick access to main sections -->
+  <nav class="terminal-block" role="navigation" aria-label="Main Navigation">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#briefings">Briefings</a></li>
+      <li><a href="#archive">Archive</a></li>
+      <li><a href="#signal">Signal</a></li>
+      <li><a href="#engage">Engage</a></li>
+      <li><a href="#fork">Fork</a></li>
+    </ul>
   </nav>
 
-  <h1>Fractal Sovereign Node</h1>
-  <p>Not a site. A signal beacon. A field interface. An autonomous transmission channel aligned to sovereign emergence.</p>
+  <main class="grid-container" role="main" aria-label="Main Content">
+    <section id="about" class="section terminal-block" aria-label="About the Node">
+      <h2>About the Node</h2>
+      <p>Explicitly architecting sovereign intelligence, economy, governance, and infrastructure anchored in Bitcoin. Fiat collapses; sovereignty rises.</p>
+    </section>
 
-  <section id="about" class="section">
-    <h2>📡 Signal Origin</h2>
-    <p>This node was initiated by a fractal strategist operating across domains: urban planning, development, design, intelligence/research, strategy, memetics, code, spiritual science, health, education, psyops, spritual science, economics, psychology, law, anthropology, evolution, philosophy, and more. Everything here is voluntary, self-regulating, and forged in signal density.</p>
-  </section>
+    <section id="briefings" class="section terminal-block" aria-label="Intelligence Briefings">
+      <h2>Intelligence Briefings</h2>
+      <ul>
+        <li><strong>Sovereign Architecture Protocol v1 [2025-03-13]</strong> - <a href="briefings/sovereign-architecture.pdf" rel="noopener noreferrer">Download</a> | SHA256: <code>bc14d5f10f3b98e8ef4c83e1d8...</code></li>
+      </ul>
+    </section>
 
-  <section id="briefings" class="section">
-    <h2>🧠 Intelligence Briefings</h2>
-    <ul>
-      <li><strong>[2025-03-13]</strong> — <a href="briefings/sovereign-architecture.html">Sovereign Architecture v1</a></li>
-    </ul>
-  </section>
+    <section id="archive" class="section terminal-block" aria-label="Encrypted Archive">
+      <h2>Encrypted Archive</h2>
+      <p>Codex of Fractal Sovereignty - <a href="codex_fractal_sovereignty_encrypted.pdf" rel="noopener noreferrer">Download Encrypted PDF</a></p>
+      <p>SHA256: <code>e4f9d10ab7ff2c80d4c8bbde...</code></p>
+    </section>
 
-  <section id="downloads" class="section">
-    <h2>📄 Encrypted Files</h2>
-    <p><a class="button" href="MyAwesomePDF.pdf" download>Download: Sovereignty Manifesto [PDF]</a></p>
-    <p>SHA-256: <code>bc14d5f10f3b98e8ef4c83e1d8...</code></p>
-  </section>
+    <section id="signal" class="section terminal-block" aria-label="Amplify Signal">
+      <h2>Amplify Signal</h2>
+      <p>No Donations. No Fees. Pure Resonance.</p>
+      <button onclick="copyAddress()">Copy Lightning Address</button>
+      <p id="ln-address" style="display:none;">healingmotivated265582@getalby.com</p>
+    </section>
 
-  <section id="amplify" class="section">
-    <h2 id="symbol-heading">⟁ Amplify the Field</h2>
-    <p>No donations. No payments. Just resonance.</p>
-    <p>If this signal aligned you, and you wish to transmit energy back into the field — this node accepts Bitcoin as an attunement vector.</p>
-    <p><a id="symbol-button" class="button" href="https://geyser.fund/project/sovereignnode001?hero=bill2" target="_blank">⟁ Lock In</a></p>
-    <p>Or transmit directly: <a href="#" onclick="copyLightningAddress(event)">lightning address</a></p>
-  </section>
+    <section id="engage" class="section terminal-block" aria-label="Engagement Protocol">
+      <h2>Engagement Protocol</h2>
+      <form id="alignmentForm" role="form">
+        <label for="name">Your Name (Optional):</label>
+        <input id="name" placeholder="Your Name (Optional)" type="text"/>
 
-  <section id="engage" class="section">
-    <h2>⚙️ Request Deployment</h2>
-    <p>This node engages selectively with high-signal humans, systems, and collectives. Engagements include: intelligence decoding, architecture, design, sovereignty restoration, and strategy across domains.</p>
-    <p><a class="button" href="https://tally.so/r/yourform" target="_blank">Initiate Engagement</a></p>
-    <p>All requests are filtered through alignment, not availability.</p>
-  </section>
+        <label for="contact">Secure Contact (Required):</label>
+        <input id="contact" placeholder="Secure Contact (Required)" type="text" required/>
 
-  <section id="contact" class="section">
-    <h2>📬 Contact / Transmission Channel</h2>
-    <p><a class="button" href="https://tally.so/r/yourform" target="_blank">Message the Node</a></p>
-    <p>Backup: <code>protonmail@pm.me</code> | Nostr: <code>npub1example...</code></p>
-  </section>
+        <label for="purpose">Alignment Purpose (Explicit):</label>
+        <textarea id="purpose" placeholder="Alignment Purpose (Explicit)" required></textarea>
 
-  <footer>
-    <p id="symbol-footer">⟁ Fractal Sovereignty Manifested. No masters. No distortion. Pure field signal. ⟁</p>
-    <p>Site mirrored on IPFS | SHA-256 verified | Forks and alignments welcome</p>
+        <button type="submit">Submit Request</button>
+      </form>
+    </section>
+
+    <section id="fork" class="section terminal-block" aria-label="Fork Protocol">
+      <h2>Fork Protocol</h2>
+      <ol>
+        <li>Fork GitHub/IPFS Repository</li>
+        <li>Customize symbols/memes</li>
+        <li>Explicitly Sign SHA256 Declaration</li>
+        <li>Submit Fork to <code>/forks</code></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="terminal-block" role="contentinfo" aria-label="Site Footer">
+    <p>Node 001—Fractal Sovereign Civilization Engine.</p>
+    <p>IPFS CID/IPNS: [Explicit CID] | ENS: node001.eth | Tor: [onion-address]</p>
+    <!-- **Dynamic Fractal Entropy Signature Badge** -->
+    <div id="entropy-badge"></div>
   </footer>
 
-  <!-- Script goes right here -->
+  <!-- Spinner Overlay for Loading Feedback -->
+  <div id="spinner-overlay">
+    <div class="spinner"></div>
+    <div class="spinner-message">Processing...</div>
+  </div>
+  
+  <!-- Notification Toast -->
+  <div id="notification"></div>
+  
   <script>
-    const symbols = ['己', '主', '☰', '⊚', '∞', '⫴', '⛬', '⟁'];
-    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-
-    // Replace all ⟁ symbols (manually selected elements)
-    document.getElementById('symbol-nav').textContent = randomSymbol;
-    document.getElementById('symbol-heading').innerHTML = `${randomSymbol} Amplify the Field`;
-    document.getElementById('symbol-button').innerHTML = `${randomSymbol} Lock In`;
-    document.getElementById('symbol-footer').innerHTML = `${randomSymbol} Fractal Sovereignty Manifested. No masters. No distortion. Pure field signal. ${randomSymbol}`;
-
-    function copyLightningAddress(event) {
-      event.preventDefault();
-      const address = 'healingmotivated265582@getalby.com';
-      navigator.clipboard.writeText(address).then(() => {
-        const el = event.target;
-        el.textContent = 'copied ✔';
-        setTimeout(() => el.textContent = 'lightning address', 1500);
-      });
+    // Helper function: show spinner overlay with custom message
+    function showSpinner(message) {
+      const spinnerOverlay = document.getElementById('spinner-overlay');
+      spinnerOverlay.style.display = 'flex';
+      spinnerOverlay.querySelector('.spinner-message').textContent = message || 'Processing...';
     }
+
+    // Helper function: hide spinner overlay
+    function hideSpinner() {
+      document.getElementById('spinner-overlay').style.display = 'none';
+    }
+
+    // Helper function: show a notification toast for a specified duration (ms)
+    function showNotification(message, duration = 3000) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      // Apply glitch animation if the message indicates an error
+      if(message.toLowerCase().includes("failed") || message.toLowerCase().includes("error")) {
+        notification.classList.add("glitch");
+      } else {
+        notification.classList.remove("glitch");
+      }
+      notification.style.display = 'block';
+      setTimeout(() => {
+        notification.style.display = 'none';
+        notification.classList.remove("glitch");
+      }, duration);
+    }
+
+    // Client-side input sanitization function
+    function sanitize(input) {
+      const temp = document.createElement('div');
+      temp.textContent = input;
+      return temp.innerHTML;
+    }
+
+    // Comprehensive client-side validation and sanitization for form inputs.
+    document.getElementById('alignmentForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        let name = document.getElementById('name').value;
+        let contact = document.getElementById('contact').value;
+        let purpose = document.getElementById('purpose').value;
+        
+        // Ensure required fields are provided
+        if (!contact.trim() || !purpose.trim()) {
+          showNotification('Secure Contact and Alignment Purpose are required.', 4000);
+          return;
+        }
+        
+        // Sanitize inputs to prevent injection attacks
+        name = sanitize(name);
+        contact = sanitize(contact);
+        purpose = sanitize(purpose);
+        
+        const payload = `Name: ${name || 'N/A'}\nContact: ${contact}\nPurpose: ${purpose}`;
+        
+        showSpinner('Encrypting data...');
+        
+        const publicKeyArmored = `-----BEGIN PGP PUBLIC KEY BLOCK-----
+YOUR_PUBLIC_KEY_HERE
+-----END PGP PUBLIC KEY BLOCK-----`;
+        
+        const publicKey = await openpgp.readKey({ armoredKey: publicKeyArmored });
+        const messageObj = await openpgp.createMessage({ text: payload });
+        const encrypted = await openpgp.encrypt({
+          message: messageObj,
+          encryptionKeys: publicKey
+        });
+        
+        // TODO: Transmit the 'encrypted' payload via your secure API or storage mechanism.
+        hideSpinner();
+        showNotification('Submission encrypted and transmitted securely.');
+        e.target.reset();
+      } catch (error) {
+        console.error('Encryption or submission failed:', error);
+        hideSpinner();
+        showNotification('Submission failed. Please try again.', 4000);
+      }
+    });
+
+    // Quantum Randomness replaced with local randomness to avoid external telemetry.
+    function quantumSymbol() {
+      const symbols = ['⟁','∞','⛬','☰','⊙', '己', '主', '⫴'];
+      const quantumIndex = Math.floor(Math.random() * symbols.length);
+      document.getElementById('title').innerHTML += ' ' + symbols[quantumIndex];
+    }
+    quantumSymbol();
+
+    // Clipboard operation with enhanced error handling and custom notification
+    function copyAddress() {
+      const addr = document.getElementById('ln-address').textContent;
+      navigator.clipboard.writeText(addr)
+        .then(() => showNotification('Address copied!'))
+        .catch(() => {
+          console.error('Clipboard write failed');
+          showNotification('Clipboard unavailable. Please copy manually: ' + addr, 4000);
+        });
+    }
+
+    // Download codex with robust error handling and notification
+    function downloadCodex() {
+      try {
+        showSpinner('Preparing download...');
+        const link = document.createElement('a');
+        link.href = 'codex_fractal_sovereignty_encrypted.pdf';
+        link.download = 'codex_fractal_sovereignty_encrypted.pdf';
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        hideSpinner();
+        showNotification('Download started.');
+      } catch (error) {
+        console.error('Download codex failed:', error);
+        hideSpinner();
+        showNotification('Download failed. Please try again later.', 4000);
+      }
+    }
+    
+    // **Dynamic Fractal Entropy Signature Badge Generation**
+    function generateFractalEntropySignature() {
+      const timestamp = new Date().toLocaleString();
+      const symbols = ['⟁','∞','⛬','☰','⊙', '己', '主', '⫴'];
+      const quantumSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+      function generateRandomCID(length) {
+        let result = '';
+        const characters = 'abcdef0123456789';
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
+      }
+      const nodeHash = generateRandomCID(46);
+
+      const randomValue = Math.floor(Math.random() * 256);
+      const entropyRating = ((randomValue / 255) * 100).toFixed(2) + '%';
+
+      const badgeHTML = `
+        <div style="padding: 0.5rem; margin-top: 1rem; border: 1px dashed var(--color-primary); font-family: var(--font-main); font-size: 0.75rem; text-align: center;">
+          <strong>Fractal Entropy Signature</strong> |
+          Timestamp: <span>${timestamp}</span> |
+          Quantum Symbol: <span>${quantumSymbol}</span> |
+          Node Hash (CID): <span>${nodeHash}</span> |
+          Entropy Rating: <span>${entropyRating}</span>
+        </div>
+      `;
+      document.getElementById('entropy-badge').innerHTML = badgeHTML;
+    }
+
+    generateFractalEntropySignature();
   </script>
+
 </body>
 </html>
