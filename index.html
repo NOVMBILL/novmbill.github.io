@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +12,8 @@
   <!-- External font dependencies removed -->
 
   <!-- Prefetch non-critical assets -->
-  <link rel="prefetch" href="briefings/sovereign-architecture.pdf" as="document">
-  <link rel="prefetch" href="codex_fractal_sovereignty_encrypted.pdf" as="document">
+  <link rel="prefetch" href="briefings/DROP_001.pdf" as="document">
+  <link rel="prefetch" href="CODEX OF FRACTAL SOVEREIGNTY v0.1.pdf" as="document">
   
   <style>
     /* Motion as Meaning, Not Gimmick
@@ -376,7 +377,7 @@
     <p>Architecting decentralized intelligence, governance, and infrastructure for fractal sovereign civilization.</p>
     <div class="button-group">
       <button onclick="document.getElementById('engage').scrollIntoView()">Become a Node</button>
-      <button onclick="downloadCodex()">Download Codex (Encrypted)</button>
+      <button onclick="downloadCodex()">Download Codex</button>
     </div>
   </header>
 
@@ -401,14 +402,14 @@
     <section id="briefings" class="section terminal-block" aria-label="Intelligence Briefings">
       <h2>Intelligence Briefings</h2>
       <ul>
-        <li><strong>Sovereign Architecture Protocol v1 [2025-03-13]</strong> - <a href="briefings/sovereign-architecture.pdf" rel="noopener noreferrer">Download</a> | SHA256: <code>bc14d5f10f3b98e8ef4c83e1d8...</code></li>
+        <li><strong>DROP_001 [2025-03-19]</strong> - <a href="briefings/DROP_001.pdf" target="_blank" rel="noopener noreferrer">Download</a> | SHA256: <code>a9eeeb01157a1d50dcf48f15e5d92f9fa937e91c275cdd192a573397598f30b0</code></li>
       </ul>
     </section>
 
-    <section id="archive" class="section terminal-block" aria-label="Encrypted Archive">
-      <h2>Encrypted Archive</h2>
-      <p>Codex of Fractal Sovereignty - <a href="codex_fractal_sovereignty_encrypted.pdf" rel="noopener noreferrer">Download Encrypted PDF</a></p>
-      <p>SHA256: <code>e4f9d10ab7ff2c80d4c8bbde...</code></p>
+    <section id="archive" class="section terminal-block" aria-label="Archive">
+      <h2>Archive</h2>
+      <p>Codex of Fractal Sovereignty - <a href="CODEX OF FRACTAL SOVEREIGNTY v0.1.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a></p>
+      <p>SHA256: <code>7e9e2a04ae908ec72f4da3acdcb36b18c083eabebc61d755b77158f80187aaf3</code></p>
     </section>
 
     <section id="signal" class="section terminal-block" aria-label="Amplify Signal">
@@ -567,9 +568,10 @@ YOUR_PUBLIC_KEY_HERE
       try {
         showSpinner('Preparing download...');
         const link = document.createElement('a');
-        link.href = 'codex_fractal_sovereignty_encrypted.pdf';
-        link.download = 'codex_fractal_sovereignty_encrypted.pdf';
+        link.href = 'CODEX OF FRACTAL SOVEREIGNTY v0.1.pdf';
+        link.download = 'CODEX OF FRACTAL SOVEREIGNTY v0.1.pdf';
         link.rel = "noopener noreferrer";
+        link.target = "_blank";  // **Ensure the download opens in a new tab**
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -618,3 +620,4 @@ YOUR_PUBLIC_KEY_HERE
 
 </body>
 </html>
+
